@@ -326,12 +326,30 @@ h6 {
 /* Navmenu - Mobile */
 @media (max-width: 1199px) {
   .mobile-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
     color: var(--nav-color);
     font-size: 28px;
     line-height: 0;
     margin-right: 10px;
     cursor: pointer;
     transition: color 0.3s;
+    touch-action: manipulation;
+    position: relative;
+    z-index: 9998;
+  }
+
+  .mobile-nav-toggle:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
   }
 
   .navmenu {
@@ -425,6 +443,11 @@ h6 {
 
   .mobile-nav-active {
     overflow: hidden;
+  }
+
+  .mobile-nav-active .header {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .mobile-nav-active .mobile-nav-toggle {

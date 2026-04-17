@@ -25,15 +25,17 @@
   /**
    * Mobile nav toggle
    */
+  const body = document.querySelector('body');
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
+  function mobileNavToggle() {
+    const isOpen = body.classList.toggle('mobile-nav-active');
+    mobileNavToggleBtn.classList.toggle('bi-list', !isOpen);
+    mobileNavToggleBtn.classList.toggle('bi-x', isOpen);
+    mobileNavToggleBtn.setAttribute('aria-expanded', String(isOpen));
   }
   if (mobileNavToggleBtn) {
-    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+    mobileNavToggleBtn.addEventListener('click', mobileNavToggle);
   }
 
   /**
@@ -42,7 +44,7 @@
   document.querySelectorAll('#navmenu a').forEach(navmenu => {
     navmenu.addEventListener('click', () => {
       if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
+        mobileNavToggle();
       }
     });
 
